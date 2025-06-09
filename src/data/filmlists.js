@@ -1,4 +1,4 @@
-const filmList = [
+const filmArray = [
   { title: 'Inception', genre: 'Fantascienza' },
   { title: 'Il Padrino', genre: 'Thriller' },
   { title: 'Titanic', genre: 'Romantico' },
@@ -7,4 +7,4 @@ const filmList = [
   { title: 'Pulp Fiction', genre: 'Thriller' },
 ]
 
-export default film
+export default filmArray
