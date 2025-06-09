@@ -12,11 +12,17 @@ function Main () {
     useEffect(() => {
         const newFilteredFilm = filmArray.filter(
             (curFilm) => 
-            selectedFilm === "all" || curFilm.genre === selectedFilm);
+            selectedFilm === "tutti" || selectedFilm === curFilm.genre);
         
         setFilteredFilm(newFilteredFilm);
+        console.log("Filtro selezionato!")
         }, [selectedFilm]);
 
+    const renderFilm = () => {
+        return filteredFilm.map((curFilm, index) => (
+            <li key={index}>{curFilm.title}</li>
+        ))
+    }
 
 
     return (
@@ -24,17 +30,17 @@ function Main () {
             <select 
             value = {selectedFilm}
             onChange={(event) => setSelectedFilm(event.target.value)}>
-                {filmArray.map((curFilm, index) => (
-                    <option key={index} value={curFilm}>
-                        {curFilm}
-                    </option>
+                <option value="tutti">Tutti</option>     
+                {filmTypes.map((curType, index) => (
+                    <option key= {index} value= {curType}>{curType}</option>
                 ))}
             </select>
-            <ul>
-                {filmArray.map((curFilm, index) => (
-                    <li key = {index}>{curFilm.title}</li>
-                ))}
-            </ul>
+         
+            <div>
+                <ul>
+                    {renderFilm()}
+                </ul>
+            </div>
         </main>
     )
 }
